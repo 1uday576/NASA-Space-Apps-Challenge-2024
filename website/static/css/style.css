@@ -10,13 +10,23 @@ body{
     color: white;
   }
 
-  .paragraph{
-    margin-top: 20px;
-    text-align: left;
-  }
+.paragraph{
+  margin-top: 20px;
+  text-align: left;
+}
 
-  .span {
-    text-align: left;
-    position: relative;
-    left: 20px;
-  }
+.span {
+  text-align: left;
+  position: relative;
+  left: 20px;
+}
+
+.plotly-graph-div{
+  max-height: 90%;
+  max-width: 90%;
+  overflow:scroll;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

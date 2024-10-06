@@ -4,28 +4,29 @@
     <head>
         <link rel ="stylesheet" type = "text/css" href="{% static 'css/style.css' %}"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     </head>
 
     <body>
         <nav class="navbar navbar-dark bg-dark">
             <div class="me-2 ">
-                <a href="" class="btn btn-outline-light me-1">About</a>
+                <a href="{% url 'homePage' %}" class="btn btn-outline-light me-1">About</a>
             </div>
 
             <div class="me-2">
-                <a href="" class="btn btn-outline-light me-1">Stellar Hosts</a>
+                <a href="{% url 'stellarHosts' %}" class="btn btn-outline-light me-1">Stellar Hosts</a>
             </div>
 
             <div class="me-2 ">
-                <a href="" class="btn btn-outline-light me-1">Exoplanets</a>
+                <a href="{% url 'exoplants' %}" class="btn btn-outline-light me-1">Exoplanets</a>
             </div>
 
             <div class="me-auto">
-                <a href="" class="btn btn-outline-light me-1">Discovery Information</a>
+                <a href="{% url 'discoveryInfo' %}" class="btn btn-outline-light me-1">Discovery Information</a>
             </div>
 
         </nav>
-        <div class="my-5 container">
+        <div >
             {% block content %}
             {% endblock %}
         </div>
