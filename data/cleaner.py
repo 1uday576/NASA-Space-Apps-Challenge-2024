@@ -8,6 +8,7 @@ stars = pd.read_csv("data/originalDowload/stellarHosts.csv", sep=',', skiprows=3
 densityGravity = stars[["st_dens", "st_logg"]]
 densityGravity.dropna(subset=["st_dens", "st_logg"], inplace=True) #drop all rows that have no value from any column
 
+densityGravity = densityGravity[densityGravity.st_dens.astype(int) < 300]
 densityGravity.to_csv("data/aggregatedData/stellar/densityGravity.csv")
 
 #age vs luminosity
@@ -45,6 +46,7 @@ solutionType.to_csv("data/aggregatedData/planeterySystems/solutionType.csv")
 #distance from star to planet
 distStarPlanet = exoplants
 distStarPlanet.dropna(inplace=True)
+distStarPlanet = distStarPlanet[distStarPlanet.pl_imppar.astype(float) > 0]
 distStarPlanet = distStarPlanet["pl_imppar"]
 distStarPlanet = distStarPlanet.value_counts()
 distStarPlanet.to_csv("data/aggregatedData/planeterySystems/distStarPlanet.csv")
@@ -52,7 +54,7 @@ distStarPlanet.to_csv("data/aggregatedData/planeterySystems/distStarPlanet.csv")
 #orbital period
 orbitalPeriod = exoplants
 orbitalPeriod.dropna(inplace=True)
-orbitalPeriod = orbitalPeriod[orbitalPeriod.pl_imppar.astype(int) < 1000]
+orbitalPeriod = orbitalPeriod[orbitalPeriod.pl_imppar.astype(float) < 400]
 orbitalPeriod = orbitalPeriod["pl_orbper"]
 orbitalPeriod = orbitalPeriod.value_counts()
 orbitalPeriod.to_csv("data/aggregatedData/planeterySystems/orbitalPeriod.csv")

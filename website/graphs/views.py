@@ -43,13 +43,13 @@ class StellarGraphs:
 
 #holds all the of the graphs related to exoplants
 class ExoplantsGraphs:
-    #distance from earth histogram
+    #status of exoplanets
     dt1 = pd.read_csv(os.path.realpath(os.path.join("..", "data", "aggregatedData", "planeterySystems","solutionType.csv")))
     solutionType = px.bar(dt1, x="soltype", y ="count",
                                  labels={
                                     "soltype": "Solution Type",
                                     "count":"Count"
-                                }, title="The status of exoplanets in NASA Exoplanet Archives.").to_html(full_html = False, include_plotlyjs=False)
+                                }, title="The status of exoplanets in NASA Exoplanet Archives.", text_auto=True).to_html(full_html = False, include_plotlyjs=False)
     
     #distance from star to exoplanet histogram
     dt2 = pd.read_csv(os.path.realpath(os.path.join("..", "data", "aggregatedData", "planeterySystems","distStarPlanet.csv")))
@@ -65,7 +65,7 @@ class ExoplantsGraphs:
                                  labels={
                                     "count":"Count",
                                     "pl_orbper": "Orbital Period (days)"
-                                    }, title="The number of exoplanets orbiting their star.").to_html(full_html = False, include_plotlyjs=False)
+                                    }, title="The number of exoplanets orbiting their star at specific distance intervals.").to_html(full_html = False, include_plotlyjs=False)
     
     #distance from earth histogram
     dt4 = pd.read_csv(os.path.realpath(os.path.join("..", "data", "aggregatedData", "planeterySystems","distEarth.csv")))
@@ -83,15 +83,15 @@ class DiscoveryInfoGraphs:
                                                                 "disc_year": "Year of Discovery",
                                                                 "count": "Count",
                                                                 "discoverymethod": "Discovery Method"
-                                                            },color="discoverymethod", title="The number of exoplants each method discovered over time.").to_html(full_html = False, include_plotlyjs=False)
-    
+                                                            },color="discoverymethod", symbol="discoverymethod",title="The number of exoplants each method discovered over time.").to_html(full_html = False, include_plotlyjs=False)
+
     #distance from earth histogram
     dt2 = pd.read_csv(os.path.realpath(os.path.join("..", "data", "aggregatedData", "discoveryInfo","discoveryFacility.csv")))
     facility = px.line(dt2, x="disc_year", y="count", labels={
                                                                 "disc_year": "Year of Discovery",
                                                                 "count": "Count",
                                                                 "disc_facility": "Facility Name"
-                                                            },color="disc_facility", title="The number of exoplants each facility discovered over time.").to_html(full_html = False, include_plotlyjs=False)
+                                                            },color="disc_facility", symbol="disc_facility",title="The number of exoplants each facility discovered over time.").to_html(full_html = False, include_plotlyjs=False)
 
 # Create your views here.
 def index(request):
