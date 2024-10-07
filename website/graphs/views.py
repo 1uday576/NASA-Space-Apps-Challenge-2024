@@ -41,8 +41,8 @@ class StellarGraphs:
                                     "count":"Count"
                                 ""}, title="The number of stars at a certain distance intervals from Earth.").to_html(full_html = False, include_plotlyjs=False)
 
-#holds all the of the graphs related to exoplants
-class ExoplantsGraphs:
+#holds all the of the graphs related to exoplanets
+class ExoplanetsGraphs:
     #status of exoplanets
     dt1 = pd.read_csv(os.path.realpath(os.path.join("..", "data", "aggregatedData", "planeterySystems","solutionType.csv")))
     solutionType = px.bar(dt1, x="soltype", y ="count",
@@ -83,7 +83,7 @@ class DiscoveryInfoGraphs:
                                                                 "disc_year": "Year of Discovery",
                                                                 "count": "Count",
                                                                 "discoverymethod": "Discovery Method"
-                                                            },color="discoverymethod", symbol="discoverymethod",title="The number of exoplants each method discovered over time.").to_html(full_html = False, include_plotlyjs=False)
+                                                            },color="discoverymethod", symbol="discoverymethod",title="The number of exoplanets each method discovered over time.").to_html(full_html = False, include_plotlyjs=False)
 
     #distance from earth histogram
     dt2 = pd.read_csv(os.path.realpath(os.path.join("..", "data", "aggregatedData", "discoveryInfo","discoveryFacility.csv")))
@@ -91,7 +91,7 @@ class DiscoveryInfoGraphs:
                                                                 "disc_year": "Year of Discovery",
                                                                 "count": "Count",
                                                                 "disc_facility": "Facility Name"
-                                                            },color="disc_facility", symbol="disc_facility",title="The number of exoplants each facility discovered over time.").to_html(full_html = False, include_plotlyjs=False)
+                                                            },color="disc_facility", symbol="disc_facility",title="The number of exoplanets each facility discovered over time.").to_html(full_html = False, include_plotlyjs=False)
 
 # Create your views here.
 def index(request):
@@ -109,18 +109,18 @@ def stellarHost(request):
 
     return render(request, "graphs/stellarHostsPage.html", context)
 
-#the exoplant page
-def exoplants(request):
+#the exoplanet page
+def exoplanets(request):
     context = {
-        "fig1": ExoplantsGraphs.solutionType,
-        "fig2": ExoplantsGraphs.disStarExo,
-        "fig3": ExoplantsGraphs.orbitalPeriod,
-        "fig4": ExoplantsGraphs.distanceEarth
+        "fig1": ExoplanetsGraphs.solutionType,
+        "fig2": ExoplanetsGraphs.disStarExo,
+        "fig3": ExoplanetsGraphs.orbitalPeriod,
+        "fig4": ExoplanetsGraphs.distanceEarth
     }
 
     return render(request, "graphs/stellarHostsPage.html", context)
 
-#the exoplant page
+#the exoplanet page
 def discoveryInfo(request):
     context = {
         "fig1": DiscoveryInfoGraphs.solutionType,
